@@ -5,40 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"/>
 </head>
 <body>
-    <div>
-        <input placeholder="Введите Логин" />
-        <button>Отправить</button>
-    </div>
-    <div>
+    <label>
+        <input placeholder="Введите Логин" id="searchvalue"/>
+        <button id = "searchBtn">Отправить</button>
+    </label>
+    <div id="card">
         <img src="https://avatars.githubusercontent.com/u/63047682?v=4">
         <h1>Nickname</h1>
         <p>Описание</p>
         <nav>
             <div>
-                <i>
-
-                </i>
+                <i class="fad fa-map-marker-alt"></i>
                 <span>location</span>
             </div>
             <div>
-                <i>
-                </i>
+                <i class="far fa-heart"></i>
                 <span>0</span>
             </div>
             <div>
-                <i>
-                </i>
-                <span>0</span>
-            </div>
-            <div>
-                <i>
-                </i>
+                <i class="fal fa-books"></i>
                 <span>0</span>
             </div>
         </nav>
+        <a href = "#">Перейти</a>
     </div>
+    <div id = "start">Введите Логин</div>
+    <div id = "load"></div>
     <script src="./main.js"></script>
 </body>
 </html>
