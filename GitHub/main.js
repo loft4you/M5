@@ -15,7 +15,7 @@ async function getCard() {
   if (response.ok) {
     dataCard = await response.json();
     console.log(dataCard);
-    generateCard()
+    generateCard();
   } else {
     start.classList.remove("none");
   }
@@ -26,7 +26,7 @@ async function getCard() {
 searchBtn.addEventListener("click", getCard);
 
 function generateCard() {
-    card.innerHTML = `<img src= '${dataCard.avatar_url}'/>
+  card.innerHTML = `<img src= '${dataCard.avatar_url}'/>
       <h1>${dataCard.login}</h1>
       <p>${dataCard.bio}</p>
       <nav>
@@ -44,6 +44,6 @@ function generateCard() {
         </div>
       </nav>
       <a href="${dataCard.html_url}">Перейти</a>
-    `
-    card.classList.remove("none");
+    `;
+  card.classList.remove("none");
 }

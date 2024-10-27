@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+    />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    main {
+      display: flex;
+      align-items: center;
+      background: #0e38b1;
+    }
+    i {
+      font-size: 50px;
+      padding: 10px;
+      color: white;
+      cursor: pointer;
+    }
+    div {
+      display: flex;
+      transition: all 0.5s;
+      /* transform: translate(-66.6%); */
+    }
+    nav {
+      overflow-x: hidden;
+    }
+    img {
+      /*width: 33.3%;*/
+      object-fit: cover;
+      aspect-ratio: 1/1;
+      /*transform: translate(-66.6%);*/
+    }
+  </style>
+  <body>
+    <main>
+      <i class="fas fa-arrow-left" id="arrowLeft"></i>
+      <nav>
+        <div id="carusel">
+          <img src="./1.webp" />
+          <img src="./2.webp" />
+          <img src="./3.webp" />
+          <img src="./4.webp" />
+          <img src="./5.webp" />
+        </div>
+      </nav>
+      <i class="fas fa-arrow-right" id="arrowRight"></i>
+    </main>
+  </body>
+  <script>
+    let arrowLeft = document.getElementById("arrowLeft");
+    let arrowRight = document.getElementById("arrowRight");
+    let carusel = document.getElementById("carusel");
+
+    let caruselElem = 2;
+    let width = 100 / caruselElem;
+    let item = carusel.children.length - caruselElem;
+    let current = 0;
+
+    for (let i = 0; i < carusel.childElementCount; i++) {
+      carusel.children[i].style.width = width + "%";
+    }
+    arrowLeft.addEventListener("click", clickLeft);
+    arrowRight.addEventListener("click", clickRight);
+    function clickRight() {
+      current += 1;
+      if (current >= item) {
+        current = 0;
+      }
+      carusel.style.transform = `translateX(-${width * current}%)`;
+    }
+    function clickLeft() {
+      current -= 1;
+      if (current < 0) {
+        current = item;
+      }
+      carusel.style.transform = `translateX(-${width * current}%)`;
+    }
+  </script>
+</html>
