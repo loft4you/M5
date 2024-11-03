@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    :root {
+      --bg: white;
+      --bg-btn: black;
+    }
+    body {
+      width: 100vh;
+      height: 100vh;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.5s;
+    }
+    button {
+      background-color: var(--bg-btn);
+      color: var(--bg);
+      border-radius: 10px;
+      padding: 10px;
+      transition: 0.5s;
+    }
+
+    [theme="white"] {
+      --bg: white;
+      --bg-btn: black;
+    }
+    [theme="dark"] {
+      --bg: black;
+      --bg-btn: white;
+    }
+  </style>
+  <body id="block" theme="light">
+    <button id="btn">Смерить Тему</button>
+  </body>
+  <script>
+    let block = document.getElementById("block");
+    let btn = document.getElementById("btn");
+
+    function changeTheme() {
+      if (block.getAttribute("theme") == "light") {
+        block.setAttribute("theme", "dark");
+      } else {
+        block.setAttribute("theme", "light");
+      }
+    }
+    btn.addEventListener("click", changeTheme);
+  </script>
+</html>
