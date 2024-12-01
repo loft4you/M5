@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      /* display: flex;
+      justify-content: center;
+      align-items: center; */
+      height: 100vh;
+    }
+    canvas {
+      display: block;
+      border: 3px solid black;
+    }
+  </style>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      canvas.width = 500;
+      canvas.height = 500;
+
+      let config = {
+        lineSize: 5,
+        color: "black",
+      };
+      let posX = [];
+      let posY = [];
+      let draw = false;
+
+      canvas.addEventListener("mousedown", (e) => {
+        draw = true;
+        context.beginPath();
+      });
+      canvas.addEventListener("mouseup", (e) => {
+        draw = false;
+      });
+
+      canvas.onmousemove = (e) => addPos(e);
+
+      function addPos(e) {
+        if (draw) {
+          posX.push(e.clientX);
+          posY.push(e.clientY);
+          context.lineTo(e.clientX, e.clientY);
+          context.stroke();
+        } else {
+          posX.push(false);
+          posY.push(false);
+        }
+      }
+      function drawLine(x, y) {
+        context.lineWidth = config.lineSize;
+        context.strokeStyle = config.color;
+        context.lineTo(x, y);
+        context.stroke();
+      }
+      function clearCanvas() {
+        canvas.width = canvas.width;
+        canvas.height = canvas.height;
+      }
+      function reDraw() {
+        posX.splice(-5);
+        posY.splice(-5);
+        for (let i = 0; i < posX.length; i++) {
+          if (posX[i] == false) {
+            context.beginPath();
+          } else {
+            drawLine(posX[i], posY[i]);
+          }
+        }
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.code == "KeyC") {
+          clearCanvas();
+        }
+        if (e.code == "KeyZ") {
+          clearCanvas();
+          reDraw();
+        }
+        if (e.code == "Space") {
+            const link = document.createElement("a");
+            link.download = "painting.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+          }
+      });
+    </script>
+  </body>
+</html>
